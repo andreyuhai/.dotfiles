@@ -1,0 +1,169 @@
+source $VIMRUNTIME/defaults.vim
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-endwise'
+
+Plugin 'vim-airline/vim-airline'
+
+" Auto pairs for '"({})"'
+Plugin 'jiangmiao/auto-pairs'
+
+" Strip white space or show white space
+Plugin 'ntpeters/vim-better-whitespace'
+
+" Theme
+Plugin 'morhetz/gruvbox'
+
+" NerdTree
+Plugin 'preservim/nerdtree'
+
+" JSX - Javascript
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+
+" Emmet for HTML
+Plugin 'mattn/emmet-vim'
+
+" Elixir
+Plugin 'elixir-editors/vim-elixir'
+
+" For tests
+Plugin 'vim-test/vim-test'
+
+" Polyglot
+Plugin 'sheerun/vim-polyglot'
+
+" FZF Vim
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+
+" Mix format
+Plugin 'mhinz/vim-mix-format'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+" ---------------------
+
+" .............................................................................
+"  General vim settings
+" .............................................................................
+
+set nu
+set rnu
+set shiftwidth=2
+set cursorline
+
+
+" .............................................................................
+"  NERDTree mappings
+" .............................................................................
+
+nmap <F6> :NERDTreeToggle<CR>
+
+
+" .............................................................................
+"  Elixir related mappings
+" .............................................................................
+
+" Easy debug line paste
+map ,p orequire IEx; IEx.pry()<ESC>
+map ,P Orequire IEx; IEx.pry()<ESC>
+
+" Clear console and run the whole elixir file
+map <leader>e :!clear & elixir %<CR>
+
+" vim-elixir
+syntax on
+
+
+" .............................................................................
+"  vim-test settings
+" .............................................................................
+
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
+
+
+" .............................................................................
+"  Search highlight toggle - requires gruvbox
+" .............................................................................
+
+nnoremap <silent> <Leader><Space> :call gruvbox#hls_toggle()<CR>
+inoremap <silent> <Leader><Space> <ESC>:call gruvbox#hls_toggle()<CR>a
+vnoremap <silent> <Leader><Space> <ESC>:call gruvbox#hls_toggle()<CR>gv
+
+nnoremap <silent> <CR> :call gruvbox#hls_hide()<CR><CR>
+
+nnoremap * :let @/ = ""<CR>:call gruvbox#hls_show()<CR>*
+nnoremap / :let @/ = ""<CR>:call gruvbox#hls_show()<CR>/
+nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
+
+
+" .............................................................................
+"  Replace map
+" .............................................................................
+
+" Substitute selected text by <S-8> (* - asterisk)
+nnoremap <Leader>r :%s///g<Left><Left>
+nnoremap <Leader>rc :%s///gc<Left><Left><Left>
+
+" First select a word by <S-8> (* - asterisk) and then select
+" a block in visual mode so that the substitution only
+" applies to those words within the selected block
+xnoremap <Leader>r :s///g<Left><Left>
+
+
+" .............................................................................
+"  FZF settings
+" .............................................................................
+
+nnoremap <silent> <C-p> :FZF -m<CR>
+
+" Allow passing optional flags into the Rg command.
+"   Example: :Rg myterm -g '*.md'
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \ "rg --column --line-number --no-heading --color=always --smart-case " .
+  \ <q-args>, 1, fzf#vim#with_preview(), <bang>0)
+
+" .............................................................................
+"  Auto commands
+" .............................................................................
+
+autocmd vimenter * ++nested colorscheme gruvbox
+
+
+" .............................................................................
+"  vim-mix-format settings
+" .............................................................................
+
+let g:mix_format_on_save = 1

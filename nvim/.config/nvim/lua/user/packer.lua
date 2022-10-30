@@ -6,6 +6,7 @@ local ensure_packer = function()
     vim.cmd [[packadd packer.nvim]]
     return true
   end
+
   return false
 end
 

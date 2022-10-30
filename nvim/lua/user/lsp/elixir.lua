@@ -1,4 +1,10 @@
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+
+if not status then
+  return
+end
+
+local capabilities = cmp_nvim_lsp.default_capabilities()
 
 require("lspconfig").elixirls.setup {
   cmd = { "/Users/burakaymakci/git/elixir-ls/release/language_server.sh" };

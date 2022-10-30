@@ -1,4 +1,8 @@
-local telescope = require('telescope.builtin')
+local status, telescope = pcall(require, "telescope.builtin")
+
+if not status then
+  return
+end
 
 vim.keymap.set("n", "<Leader>ff", function ()
   telescope.find_files()

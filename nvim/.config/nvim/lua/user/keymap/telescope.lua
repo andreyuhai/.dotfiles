@@ -16,6 +16,6 @@ vim.keymap.set("n", "<Leader>fb", function()
   telescope.buffers()
 end)
 
-vim.keymap.set("n", "<Leader>fs", function()
+vim.keymap.set("n", "<Leader>fg", function()
   telescope.grep_string({ search = vim.fn.input("Grep For > ") })
 end)

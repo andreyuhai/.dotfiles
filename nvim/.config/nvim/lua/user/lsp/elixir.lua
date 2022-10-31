@@ -7,7 +7,9 @@ end
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
 require("lspconfig").elixirls.setup {
-  cmd = { "/Users/burakaymakci/git/elixir-ls/release/language_server.sh" };
+  -- Don't forget to put the language server
+  -- under bin as elixir_language_server.sh
+  cmd = { "elixir_language_server.sh" };
   capabilities = capabilities;
 
   on_attach = function()

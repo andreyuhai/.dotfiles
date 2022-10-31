@@ -13,4 +13,7 @@ vim.keymap.set("n", "<C-k>", ":cp<esc>zz")
 -- Open up a terminal in split
 vim.keymap.set("n", "<Leader>t", ":split <bar> resize 15 <bar> terminal<cr>")
 
+-- Edit vim config
+vim.keymap.set("n", "<Leader>ev", ":e $MYVIMRC<cr>")
+
 -- nvim --clean --headless -S "<plugins_file>" -c "PackerSync" -c "qa!"

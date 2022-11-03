@@ -1,0 +1,8 @@
+[user]
+  name = "andreyuhai"
+
+[fetch]
+  prune = true
+
+[pull]
+  rebase = true

@@ -55,6 +55,8 @@ return require('packer').startup(function(use)
 
   use 'github/copilot.vim'
 
+  use 'phaazon/hop.nvim'
+
   if packer_bootstrap then
     require('packer').sync()
   end

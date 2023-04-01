@@ -29,7 +29,9 @@ return require('packer').startup(function(use)
 
   use 'nvim-lua/plenary.nvim'
 
+  -- Treesitter
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdateSync'}
+  use 'nvim-treesitter/nvim-treesitter-context'
 
   use 'nvim-telescope/telescope.nvim'
 

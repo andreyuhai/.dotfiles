@@ -9,3 +9,5 @@ catppuccin.setup {
 }
 
 vim.api.nvim_command "colorscheme catppuccin"
+
+vim.api.nvim_set_hl(0, "TreesitterContextBottom", { underline = true, sp = "#858ba8", italic = true, bg = "#1e1e1e" })

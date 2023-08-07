@@ -1,21 +1,25 @@
-local status, telescope = pcall(require, "telescope.builtin")
+local status, builtin = pcall(require, "telescope.builtin")
 
 if not status then
   return
 end
 
 vim.keymap.set("n", "<Leader>ff", function ()
-  telescope.find_files()
+  builtin.find_files()
 end)
 
 vim.keymap.set("n", "<Leader>fw", function()
-  telescope.grep_string { search = vim.fn.expand("<cword>") }
+  builtin.grep_string { search = vim.fn.expand("<cword>") }
 end)
 
 vim.keymap.set("n", "<Leader>fb", function()
-  telescope.buffers()
+  builtin.buffers()
 end)
 
 vim.keymap.set("n", "<Leader>fg", function()
-  telescope.grep_string({ search = vim.fn.input("Grep For > ") })
+  builtin.grep_string({ search = vim.fn.input("Grep For > ") })
+end)
+
+vim.keymap.set("n", "<Leader>fl", function()
+  require("telescope").extensions.live_grep_args.live_grep_args()
 end)

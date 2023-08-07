@@ -33,7 +33,15 @@ return require('packer').startup(function(use)
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdateSync'}
   use 'nvim-treesitter/nvim-treesitter-context'
 
-  use 'nvim-telescope/telescope.nvim'
+  use {
+    "nvim-telescope/telescope.nvim",
+    requires = {
+      { "nvim-telescope/telescope-live-grep-args.nvim" },
+    },
+    config = function()
+      require("telescope").load_extension("live_grep_args")
+    end
+  }
 
   use 'neovim/nvim-lspconfig'
 

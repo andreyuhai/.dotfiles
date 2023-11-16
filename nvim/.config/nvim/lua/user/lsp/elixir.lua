@@ -19,5 +19,12 @@ require("lspconfig").elixirls.setup {
     vim.keymap.set("n", "<Leader>db", vim.diagnostic.goto_prev, {buffer=0})
     vim.keymap.set("n", "<Leader>df", vim.diagnostic.goto_next, {buffer=0})
     vim.keymap.set("n", "<Leader>dl", "<cmd>Telescope diagnostics<cr>", {buffer=0})
-  end
+  end;
+
+  settings = {
+    elixirLS = {
+      dialyzerEnabled = false,
+      fetchDeps = false
+    }
+  }
 }

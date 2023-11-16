@@ -16,3 +16,6 @@ vim.keymap.set("n", "<Leader>t", ":split <bar> resize 15 <bar> terminal<cr>")
 -- Edit vim config
 vim.keymap.set("n", "<Leader>ev", ":e $MYVIMRC<cr>", { silent = true })
 vim.keymap.set("n", "<Leader>sv", ":source $MYVIMRC<cr>", { silent = true })
+
+-- LSP
+vim.keymap.set("n", "<Leader>=", ":lua vim.lsp.buf.format()<cr>", { silent = true })

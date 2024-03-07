@@ -10,6 +10,7 @@ require("user.lualine")
 require("user.settings")
 require("user.telescope")
 require("user.treesitter")
+require("user.treesitter-context")
 
 -- Somehow if this needs to be in the end otherwise keymaps won't work for some reason
 require("user.keymap")

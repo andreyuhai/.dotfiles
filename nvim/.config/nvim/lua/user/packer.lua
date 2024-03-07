@@ -26,6 +26,7 @@ return require('packer').startup(function(use)
   use 'saadparwaiz1/cmp_luasnip'
 
   use 'elixir-editors/vim-elixir'
+  use 'jvirtanen/vim-hcl'
 
   use 'nvim-lua/plenary.nvim'
 

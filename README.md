@@ -1,6 +1,10 @@
 ### Dotfiles
 
-Clone into `$HOME` then simply call run `./install`. Install script requires [stow](https://www.gnu.org/software/stow/). Right now install script is kind of pointless, because it's a one-liner.
+```
+> cd $HOME && git clone https://github.com/andreyuhai/.dotfiles.git && $HOME/.dotfiles/install
+```
+
+Install script requires [stow](https://www.gnu.org/software/stow/). Right now install script is kind of pointless, because it's a one-liner.
 
 (_For Elixir language server and other language servers, don't forget to put them under bin with the appropriate name_)
 

@@ -1,3 +1,13 @@
 #!/usr/bin/env bash
 
+if test ! $(which brew); then
+  echo "Installing homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+if test ! $(which stow); then
+  echo "Installing stow..."
+  brew install stow
+fi
+
 stow -R nvim tmux git

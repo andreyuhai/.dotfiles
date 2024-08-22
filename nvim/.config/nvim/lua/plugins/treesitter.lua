@@ -60,14 +60,13 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter-context",
-    config = function()
-      local context = require("treesitter-context")
+    opts = {
+      enable     = true,
+      max_lines  = 5,
+      min_window_height = 50,
+      trim_scope = 'outer',
+      separator = '='
 
-      context.setup {
-	enable     = true,
-	max_lines  = 5,
-	trim_scope = 'outer'
-      }
-    end
+    }
   }
 }

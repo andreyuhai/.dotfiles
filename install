@@ -10,4 +10,7 @@ if test ! $(which stow); then
   brew install stow
 fi
 
+# Needed for tmux plugins
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 stow -R nvim tmux git

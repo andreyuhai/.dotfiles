@@ -19,6 +19,9 @@ return {
 	"yamlls",
       },
       handlers = {
+	function(server_name)
+	  require("lspconfig")[server_name].setup({})
+	end,
 	["lua_ls"] = function ()
 	  local lspconfig = require("lspconfig")
 

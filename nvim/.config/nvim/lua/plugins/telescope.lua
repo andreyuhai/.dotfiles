@@ -4,7 +4,7 @@ return {
     dependencies = {
       { "nvim-telescope/telescope-live-grep-args.nvim" },
     },
-    config = function()
+    init = function()
       local telescope = require("telescope")
       local builtin   = require("telescope.builtin")
 

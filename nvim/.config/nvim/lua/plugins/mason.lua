@@ -19,8 +19,19 @@ return {
 	"yamlls",
       },
       handlers = {
-	function(server_name)
-	  require("lspconfig")[server_name].setup({})
+	["lua_ls"] = function ()
+	  local lspconfig = require("lspconfig")
+
+	  lspconfig.lua_ls.setup {
+	    settings = {
+	      Lua = {
+		diagnostics = {
+		  -- To avoid undefined global `vim` warnings
+		  globals = { "vim" }
+		}
+	      }
+	    }
+	  }
 	end,
       }
     }

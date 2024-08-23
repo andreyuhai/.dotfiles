@@ -3,6 +3,7 @@ return {
   {
     "VonHeikemen/lsp-zero.nvim",
     branch = "v4.x",
+    priority = 60, -- need to set priority otherwise Mason interferes
     config = function()
       local lsp_zero = require("lsp-zero")
 

@@ -15,7 +15,7 @@ return {
 	"sqls",
 	"tailwindcss",
 	"terraformls",
-	"tsserver",
+	"ts_ls",
 	"yamlls",
       },
       handlers = {

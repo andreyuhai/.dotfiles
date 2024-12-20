@@ -18,6 +18,7 @@ return {
 	"ts_ls",
 	"yamlls",
       },
+
       handlers = {
 	function(server_name)
 	  require("lspconfig")[server_name].setup({})
@@ -31,6 +32,15 @@ return {
 		diagnostics = {
 		  -- To avoid undefined global `vim` warnings
 		  globals = { "vim" }
+		},
+
+		-- This currently doesn't work for some reason.
+		format = {
+		  defaultConfig = {
+		    indent_size = "2",
+		    indent_style = "space",
+		    quote_style = "single"
+		  }
 		}
 	      }
 	    }

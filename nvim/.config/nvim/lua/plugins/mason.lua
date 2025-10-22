@@ -17,6 +17,7 @@ return {
 	"terraformls",
 	"ts_ls",
 	"yamlls",
+	"expert"
       },
 
       handlers = {

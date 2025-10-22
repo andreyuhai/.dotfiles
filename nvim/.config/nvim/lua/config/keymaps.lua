@@ -27,7 +27,7 @@ vim.api.nvim_create_autocmd("FileType", {
     local function insert_IO_inspect(direction)
       local word = vim.fn.expand("<cword>")
       local inspect_string = string.format(
-	'IO.inspect(%s, label: "BAZ[L:#{__ENV__.line}] - #{__MODULE__}.#{elem(__ENV__.function, 0)}/#{elem(__ENV__.function, 1)} - %s:\\n")',
+	'IO.inspect(%s, label: "\\n[L:#{__ENV__.line}] - #{__MODULE__}.#{elem(__ENV__.function, 0)}/#{elem(__ENV__.function, 1)} - %s:\\n", limit: :infinity, charlists: :as_lists, pretty: true)',
 	word,
 	word
       )

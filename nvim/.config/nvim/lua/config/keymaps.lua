@@ -20,6 +20,22 @@ vim.keymap.set("n", "<Leader>=", ":lua vim.lsp.buf.format()<cr>", { silent = tru
 -- Netrw
 vim.keymap.set("n", "<Leader>pv", vim.cmd.Ex)
 
+-- tmux-sessionizer
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+
+-- Copy-path in visual mode
+vim.keymap.set('x', '<C-p>', function()
+  local path = vim.fn.expand('%:p')
+  local start_line = vim.fn.getpos('v')[2]
+  local end_line = vim.fn.getpos('.')[2]
+
+  if start_line > end_line then
+    start_line, end_line = end_line, start_line
+  end
+
+  vim.fn.setreg('+', path .. ':' .. start_line .. '-' .. end_line)
+end)
+
 -- Elixir IO.inspect
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "elixir",

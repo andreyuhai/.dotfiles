@@ -9,7 +9,7 @@ return {
 
       local attach = function(_client, bufnr)
 	-- Diagnostics
-	vim.keymap.set('n', '[d', function() vim.diagnostic.goto_next() end)
+	vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end)
 	vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end)
 	vim.keymap.set('n', '<leader>vd', function() vim.diagnostic.open_float() end)
 	vim.keymap.set('n', '<leader>qd', function() vim.diagnostic.setqflist() end)

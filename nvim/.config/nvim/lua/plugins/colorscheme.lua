@@ -18,11 +18,15 @@ return {
     end,
     opts = {
       transparent_background = true,
+      auto_integrations = true,
+    },
+    -- opts = {
+      transparent_background = true,
       integrations = {
 	cmp = true,
 	indent_blankline = { enabled = true },
 	mason = true,
-	telescope = true,
+	-- telescope = true,
 	treesitter = true,
 	treesitter_context = true,
 	native_lsp = {
@@ -35,6 +39,6 @@ return {
 	  },
 	},
       }
-    },
+    -- },
   },
 }

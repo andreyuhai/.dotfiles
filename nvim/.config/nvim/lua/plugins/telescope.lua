@@ -13,6 +13,7 @@ return {
       vim.keymap.set("n", "<Leader>fb", builtin.buffers, {})
       vim.keymap.set("n", "<Leader>ff", builtin.find_files, {})
       vim.keymap.set("n", "<Leader>fl", telescope.extensions.live_grep_args.live_grep_args, {})
+      vim.keymap.set("n", "<Leader>fj", builtin.jumplist, {})
       vim.keymap.set("n", "<Leader>fo", builtin.oldfiles, {})
       vim.keymap.set("n", "<Leader>gf", builtin.git_files, {})
 

@@ -24,3 +24,5 @@ vim.opt.undofile       = true
 
 vim.opt.completeopt    = {"menu", "menuone", "noselect"}
 vim.opt.colorcolumn    = "100"
+
+vim.diagnostic.config({ float = { border = border, source = "always" } })

@@ -1,0 +1,14 @@
+# Do not commit claude specific plans and local settings
+**/.claude/settings.local.json
+**/.claude/tasks
+
+# Elixir language server related stuff
+**/.expert
+**/.lexical
+
+# Elixir build files
+**/_build/**
+
+# Proto
+**/*.protoset
+**/*.binpb

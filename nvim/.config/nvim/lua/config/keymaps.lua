@@ -21,7 +21,24 @@ vim.keymap.set("n", "<Leader>=", ":lua vim.lsp.buf.format()<cr>", { silent = tru
 vim.keymap.set("n", "<Leader>pv", vim.cmd.Ex)
 
 -- tmux-sessionizer
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+-- Conflicts with actual CTRL+f, gotta find a new shortcut
+-- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+
+-- tmux-vim-picker: Promote popup nvim to a real tmux window
+vim.keymap.set("n", "<leader>P", function()
+  local cwd = vim.fn.getcwd()
+  local file = vim.fn.expand("%:p")
+  vim.fn.system({ "tmux-vim-promote", "window", cwd, file })
+  vim.defer_fn(function() vim.cmd("qa!") end, 100)
+end, { desc = "Promote to tmux window" })
+
+-- tmux-vim-picker: Promote popup nvim to a split pane
+vim.keymap.set("n", "<leader>p", function()
+  local cwd = vim.fn.getcwd()
+  local file = vim.fn.expand("%:p")
+  vim.fn.system({ "tmux-vim-promote", "split", cwd, file })
+  vim.defer_fn(function() vim.cmd("qa!") end, 100)
+end, { desc = "Promote to tmux split" })
 
 -- Copy-path in visual mode
 vim.keymap.set('x', '<C-p>', function()
@@ -35,6 +52,37 @@ vim.keymap.set('x', '<C-p>', function()
 
   vim.fn.setreg('+', path .. ':' .. start_line .. '-' .. end_line)
 end)
+
+-- Preview current markdown file rendered with glow in a floating window
+vim.keymap.set("n", "<leader>md", function()
+  local file = vim.api.nvim_buf_get_name(0)
+  if file == "" then return end
+
+  local buf = vim.api.nvim_create_buf(false, true)
+  local width = math.floor(vim.o.columns * 0.8)
+  local height = math.floor(vim.o.lines * 0.8)
+
+  local win = vim.api.nvim_open_win(buf, true, {
+    relative = "editor",
+    width = width,
+    height = height,
+    col = math.floor((vim.o.columns - width) / 2),
+    row = math.floor((vim.o.lines - height) / 2),
+    style = "minimal",
+    border = "rounded",
+  })
+
+  vim.fn.termopen("glow -p " .. vim.fn.shellescape(file))
+  vim.cmd("startinsert")
+
+  -- Close the float with q or Esc
+  vim.keymap.set("t", "q", function()
+    vim.api.nvim_win_close(win, true)
+  end, { buffer = buf })
+  vim.keymap.set("t", "<Esc>", function()
+    vim.api.nvim_win_close(win, true)
+  end, { buffer = buf })
+end, { desc = "Preview markdown with glow" })
 
 -- Elixir IO.inspect
 vim.api.nvim_create_autocmd("FileType", {

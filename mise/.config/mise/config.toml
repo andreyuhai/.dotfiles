@@ -1,5 +1,8 @@
 [tools]
 elixir = "1.16.2-otp-26"
 erlang = "26.2.5"
+fcloud = "latest"
+go = "latest"
+houston = "latest"
 node = "24.9.0"
 ruby = "3.3.0"

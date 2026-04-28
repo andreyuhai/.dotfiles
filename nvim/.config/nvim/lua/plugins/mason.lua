@@ -18,8 +18,8 @@ return {
 	"ts_ls",
 	"yamlls",
 	-- Elixir
-	-- "expert",
-	"lexical"
+	"expert",
+	-- "lexical"
       },
 
       handlers = {

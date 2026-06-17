@@ -18,27 +18,31 @@ return {
     end,
     opts = {
       transparent_background = true,
+      -- transparent_background alone no longer makes floating windows
+      -- transparent in catppuccin; floats need their own opt-in. Without
+      -- this, Telescope (TelescopeNormal -> NormalFloat) gets the opaque
+      -- mantle background.
+      float = {
+        transparent = true,
+      },
       auto_integrations = true,
-    },
-    -- opts = {
-      transparent_background = true,
       integrations = {
-	cmp = true,
-	indent_blankline = { enabled = true },
-	mason = true,
-	-- telescope = true,
-	treesitter = true,
-	treesitter_context = true,
-	native_lsp = {
-	  enabled = true,
-	  underlines = {
-	    errors = { "undercurl" },
-	    hints = { "undercurl" },
-	    warnings = { "undercurl" },
-	    information = { "undercurl" },
-	  },
-	},
-      }
-    -- },
+        cmp = true,
+        indent_blankline = { enabled = true },
+        mason = true,
+        telescope = true,
+        treesitter = true,
+        treesitter_context = true,
+        native_lsp = {
+          enabled = true,
+          underlines = {
+            errors = { "undercurl" },
+            hints = { "undercurl" },
+            warnings = { "undercurl" },
+            information = { "undercurl" },
+          },
+        },
+      },
+    },
   },
 }
